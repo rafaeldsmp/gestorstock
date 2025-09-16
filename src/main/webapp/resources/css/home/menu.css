@@ -1,0 +1,47 @@
+.top-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-photo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    object-fit: cover;
+}
+
+.user-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-name {
+    font-weight: bold;
+}
+
+.user-role {
+    font-size: 0.85em;
+    color: #bdc3c7;
+}
+
+.menu-links a {
+    color: #ecf0f1;
+    text-decoration: none;
+    margin-left: 15px;
+    font-weight: bold;
+}
+
+.menu-links a:hover {
+    text-decoration: underline;
+}
