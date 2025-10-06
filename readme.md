@@ -65,7 +65,7 @@ controle-estoque/
 │  │  ├─ controller/         # Controllers Spring MVC (REST controllers)
 │  │  ├─ service/            # Regras de negócio
 │  │  ├─ repository/         # DAOs ou Repositories (JDBC/JPA)
-│  │  ├─ dto/                # DTOs para request/response
+│  │  ├─ controller.dto/                # DTOs para request/response
 │  │  ├─ model/              # Entidades (POJOs)
 │  │  ├─ exception/          # Exceções customizadas e handlers
 │  │  └─ config/             # Configurações Spring, Security, Swagger
