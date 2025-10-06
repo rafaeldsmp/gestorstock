@@ -27,14 +27,8 @@ public class CategoriaController {
                 .collect(Collectors.toList());
 
         model.addAttribute("categorias", dtos);
-        return "lista"; // JSP em /WEB-INF/views/categoria-lista.jsp
+        return "lista";
     }
-
-//        @RequestMapping(value = "/teste", method = RequestMethod.GET)
-//        public String teste(Model model) {
-//            model.addAttribute("mensagem", "Spring MVC funcionando!");
-//            return "teste"; // nome do JSP
-//        }
 
     @GetMapping("/teste")
     @ResponseBody

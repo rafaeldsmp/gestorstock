@@ -1,0 +1,76 @@
+/* Fundo agradável */
+body {
+    padding-top: 70px;
+    background: linear-gradient(135deg, #007bff, #28a745);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #fff;
+}
+
+/* Navbar com logo */
+.navbar {
+    background-color: rgba(0,0,0,0.8) !important;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-brand img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+/* Cards hover */
+.card-hover {
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+}
+
+/* Ícones grandes nos cards */
+.card-icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+/* Título dashboard */
+.dashboard-header {
+    color: #fff;
+    margin-bottom: 40px;
+}
+
+/* Container cards centralizados */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+/* Cards individuais */
+.card {
+    width: 220px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.9);
+    color: #000;
+}
+
+/* Progress bar e resumo */
+.progress {
+    height: 20px;
+    border-radius: 10px;
+}
+
+.progress-container {
+    text-align: center;
+}
+
+.saudacao{
+    color: #fff;
+}

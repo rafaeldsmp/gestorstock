@@ -27,8 +27,8 @@
     <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"/>
 
     <!-- Recursos estáticos -->
-    <mvc:resources mapping="/resources/**" location="/WEB-INF/resources/"/>
-
+    <mvc:resources mapping="/resources/**" location="/resources/" />
+    <mvc:annotation-driven />
     <!-- View Resolver -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/views/"/>
