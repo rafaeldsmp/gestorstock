@@ -8,7 +8,7 @@
         <div class="user-details">
             <span class="user-name">${sessionScope.usuario.nome}</span>
             <span class="user-role">${sessionScope.usuario.funcao}</span>
-            <span> "provcurando"</span>
+            <span> "procurando"</span>
         </div>
     </div>
     <div class="menu-links">
