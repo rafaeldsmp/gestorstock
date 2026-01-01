@@ -31,12 +31,11 @@ Aplicação mínima viável de Controle de Estoque para gerenciar produtos, cate
 ## Tecnologias
 
 * Java 8
-* Spring Framework (Spring MVC, Spring Data - opcional, Spring Security - opcional)
-* JSP (views administrativas/clientes, se houver) — embora a API seja RESTful
-* WildFly (versão compatível com Java 8, ex: WildFly 16/17/18)
-* Maven (build) — arquivo `pom.xml`
-* Banco de dados: PostgreSQL (sugestão) ou MySQL
-* JDBC (ou JPA/Hibernate se preferir)
+* Spring Framework (Spring MVC, Spring Data, Spring Security)
+* JSP
+* WildFly
+* Maven
+* Banco de dados: PostgreSQL
 * Jackson (JSON)
 * Swagger (OpenAPI) para documentação interativa
 * JUnit + Mockito (testes)
@@ -92,7 +91,7 @@ controle-estoque/
 * `usuario` (id, username, senha\_hash, nome, email)
 * `usuario_role` (usuario\_id, role)
 
-### Exemplo SQL (Postgres)
+### SQL (Postgres)
 
 ```sql
 CREATE TABLE categoria (
@@ -158,7 +157,7 @@ CREATE TABLE usuario_role (
 
 * `200 OK` — sucesso
 * `201 Created` — recurso criado
-* `204 No Content` — sucesso sem corpo (ex: delete)
+* `204 No Content` — sucesso sem corpo
 * `400 Bad Request` — validação/entrada inválida
 * `401 Unauthorized` — sem autenticação
 * `403 Forbidden` — sem permissão
@@ -168,7 +167,7 @@ CREATE TABLE usuario_role (
 
 ---
 
-## Endpoints detalhados (exemplos)
+## Endpoints
 
 ### Produtos
 
@@ -298,8 +297,6 @@ Registra um movimento — entrada/saída/ajuste.
 
 Retorna histórico de movimentos filtrado.
 
----
-
 ## DTOs / Modelos (exemplo resumido)
 
 ```java
@@ -324,8 +321,6 @@ class MovimentoDTO {
   String observacao;
 }
 ```
-
----
 
 ## Validações e mensagens de erro
 
@@ -356,34 +351,10 @@ class MovimentoDTO {
 * Endpoints de autenticação: `POST /api/v1/auth/login` (retorna token)
 * Proteger endpoints sensíveis (ex: movimentos, CRUD) com roles apropriadas.
 
----
-
-## Documentação interativa
-
-* Integrar **Swagger / OpenAPI** (ex: Springfox ou springdoc-openapi) para gerar docs em `/swagger-ui.html` ou `/swagger-ui/index.html`.
-* Especificar modelos e exemplos para cada endpoint.
-
----
-
-## Deploy no WildFly (resumo)
-
-1. Empacote a aplicação como **WAR** com `mvn clean package`.
-2. Configure o datasource no WildFly (`standalone.xml` ou via console) com um JNDI, ex: `java:/jdbc/controleestoqueDS`.
-3. Ajuste o `application.properties` (ou o `web.xml`/context params) para usar o datasource JNDI:
-
-```properties
-spring.datasource.jndi-name=java:/jdbc/controleestoqueDS
-```
-
-4. Copie o `controle-estoque.war` para `WILDFLY_HOME/standalone/deployments/` ou use o Management Console/CLI.
-5. Acompanhe logs em `WILDFLY_HOME/standalone/log/server.log`.
-
----
-
 ## Como rodar localmente (passo-a-passo)
 
 1. Instalar JDK 8 e Maven
-2. Configurar banco local (Postgres/MySQL) e criar o schema usando os scripts em `src/main/resources/db/migration`
+2. Configurar banco local (Postgres) e criar o schema usando os scripts em `src/main/resources/db/migration`
 3. Ajustar `src/main/resources/application.properties` (URL do DB, usuário, senha)
 4. Build: `mvn clean package`
 5. Rodar com WildFly (deploy do WAR) ou — para desenvolvimento rápido — usar um plugin/embebed server (opcional)
@@ -399,14 +370,6 @@ spring.datasource.jndi-name=java:/jdbc/controleestoqueDS
 
 ---
 
-## Observabilidade e logs
-
-* Usar SLF4J + Logback
-* Logs estruturados (JSON) quando possível
-* Integrar métricas básicas com Actuator (se usar Spring Boot) ou expor endpoints de métricas customizadas
-
----
-
 ## Boas práticas / checklist
 
 * DTOs para entrada/saída (não expor entidades diretamente)
@@ -416,33 +379,3 @@ spring.datasource.jndi-name=java:/jdbc/controleestoqueDS
 * Validar entrada com `javax.validation` (`@NotNull`, `@Size`, `@Min`)
 * Testes automatizados
 * CI: pipeline que roda `mvn clean test`, build e deploy automático para ambiente de staging
-
----
-
-## Próximos passos / melhorias sugeridas
-
-* Implementar controle de lote/validades
-* Integração com sistema de faturamento/ERP
-* Relatórios exportáveis (CSV, XLSX)
-* Notificações (e-mail) quando produto atingir estoque mínimo
-* Front-end em Angular/React para painel administrativo
-
----
-
-## Arquivos úteis para adicionar ao repositório
-
-* `README.md` (este documento)
-* `pom.xml` com profiles (dev/test/prod)
-* `src/main/resources/db/migration/*.sql`
-* `postman/ControleEstoque.postman_collection.json` (coleção para testes)
-* `openapi/openapi.yaml` (spec completa)
-
----
-
-Se quiser, eu:
-
-* gero o **OpenAPI (YAML)** completo para os endpoints principais;
-* crio a **coleção Postman** com exemplos;
-* ou **faço o `pom.xml` base** e `web.xml`/configurações para deploy no WildFly.
-
-Qual desses você quer que eu gere agora?
